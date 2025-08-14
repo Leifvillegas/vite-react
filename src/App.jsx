@@ -1,6 +1,5 @@
-// src/App.jsx
+// router/src/App.jsx
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// ✅ FIXED PATHS: pages live in ./pages if App.jsx is in /src
 import Layout from "../pages/Layout";
 import Home from "../pages/Home";
 import Blogs from "../pages/Blogs";
@@ -9,19 +8,18 @@ import NoPage from "../pages/NoPage";
 import Dashboard from "../pages/Dashboard";
 import Stats from "../pages/Stats";
 import Settings from "../pages/Settings";
+import Books from "../pages/Books";          // ← ADD THIS
 
-// ❌ import ReactDOM from "react-dom/client";  // remove this from App.jsx
-
-function App() {
+export default function App() {
   return (
-    <BrowserRouter> {/* ✅ Added wrapper per tutorial Step 1 */}
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="blogs" element={<Blogs />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="books" element={<Books />} />  {/* ← ADD THIS */}
 
-          {/* Nested dashboard routes */}
           <Route path="dashboard" element={<Dashboard />}>
             <Route path="stats" element={<Stats />} />
             <Route path="settings" element={<Settings />} />
@@ -33,5 +31,3 @@ function App() {
     </BrowserRouter>
   );
 }
-
-export default App;
